@@ -21,12 +21,12 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`admin.geodex.org`)"
+      - "traefik.http.routers.traefik.rule=Host(`admin.foo.org`)"
       - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:SpiffyAdminPasswordHere"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`admin.geodex.org`)"
+      - "traefik.http.routers.traefik-secure.rule=Host(`admin.foo.org`)"
       - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
       - "traefik.http.routers.traefik-secure.tls=true"
       - "traefik.http.routers.traefik-secure.tls.certresolver=http"
@@ -42,11 +42,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.triplestore.entrypoints=http"
-      - "traefik.http.routers.triplestore.rule=Host(`graph.geodex.org`)"
+      - "traefik.http.routers.triplestore.rule=Host(`graph.foo.org`)"
       - "traefik.http.middlewares.triplestore-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.triplestore.middlewares=triplestore-https-redirect"
       - "traefik.http.routers.triplestore-secure.entrypoints=https"
-      - "traefik.http.routers.triplestore-secure.rule=Host(`graph.geodex.org`)"
+      - "traefik.http.routers.triplestore-secure.rule=Host(`graph.foo.org`)"
       - "traefik.http.routers.triplestore-secure.tls=true"
       - "traefik.http.routers.triplestore-secure.tls.certresolver=http"
       - "traefik.http.routers.triplestore-secure.service=triplestore"
@@ -72,11 +72,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.s3system.entrypoints=http"
-      - "traefik.http.routers.s3system.rule=Host(`oss.geodex.org`)"
+      - "traefik.http.routers.s3system.rule=Host(`oss.foo.org`)"
       - "traefik.http.middlewares.s3system-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.s3system.middlewares=s3system-https-redirect"
       - "traefik.http.routers.s3system-secure.entrypoints=https"
-      - "traefik.http.routers.s3system-secure.rule=Host(`oss.geodex.org`)"
+      - "traefik.http.routers.s3system-secure.rule=Host(`oss.foo.org`)"
       - "traefik.http.routers.s3system-secure.tls=true"
       - "traefik.http.routers.s3system-secure.tls.certresolver=http"
       - "traefik.http.routers.s3system-secure.service=s3system"
@@ -96,13 +96,13 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.mercantile.entrypoints=http"
-      - "traefik.http.routers.mercantile.rule=Host(`api.geodex.org`)"
-        #- "traefik.http.routers.mercantile.rule=(Host(`geodex.org`) && Path(`/query`)"
+      - "traefik.http.routers.mercantile.rule=Host(`api.foo.org`)"
+        #- "traefik.http.routers.mercantile.rule=(Host(`foo.org`) && Path(`/query`)"
       - "traefik.http.middlewares.mercantile-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.mercantile.middlewares=mercantile-https-redirect"
       - "traefik.http.routers.mercantile-secure.entrypoints=https"
-      - "traefik.http.routers.mercantile-secure.rule=Host(`api.geodex.org`)"
-        #- "traefik.http.routers.mercantile-secure.rule=(Host(`geodex.org`) && Path(`/query`)"
+      - "traefik.http.routers.mercantile-secure.rule=Host(`api.foo.org`)"
+        #- "traefik.http.routers.mercantile-secure.rule=(Host(`foo.org`) && Path(`/query`)"
       - "traefik.http.routers.mercantile-secure.tls=true"
       - "traefik.http.routers.mercantile-secure.tls.certresolver=http"
       - "traefik.http.routers.mercantile-secure.service=mercantile"
@@ -126,11 +126,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.koop.entrypoints=http"
-      - "traefik.http.routers.koop.rule=Host(`spatial.geodex.org`)"
+      - "traefik.http.routers.koop.rule=Host(`spatial.foo.org`)"
       - "traefik.http.middlewares.koop-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.koop.middlewares=koop-https-redirect"
       - "traefik.http.routers.koop-secure.entrypoints=https"
-      - "traefik.http.routers.koop-secure.rule=Host(`spatial.geodex.org`)"
+      - "traefik.http.routers.koop-secure.rule=Host(`spatial.foo.org`)"
       - "traefik.http.routers.koop-secure.tls=true"
       - "traefik.http.routers.koop-secure.tls.certresolver=http"
       - "traefik.http.routers.koop-secure.service=koop"
@@ -144,18 +144,18 @@ services:
     environment:
       - S3ADDRESS=s3system:9000
       - S3BUCKET=sites
-      - S3PREFIX=geodex
-      - DOMAIN=https://www.geodex.org/
+      - S3PREFIX=domain
+      - DOMAIN=https://www.foo.org/
       - S3KEY=bestAccessKeyEver
       - S3SECRET=bestSecretKeyEver
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.features.entrypoints=http"
-      - "traefik.http.routers.features.rule=Host(`geodex.org`,`www.geodex.org`)"
+      - "traefik.http.routers.features.rule=Host(`foo.org`,`www.foo.org`)"
       - "traefik.http.middlewares.features-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.features.middlewares=features-https-redirect"
       - "traefik.http.routers.features-secure.entrypoints=https"
-      - "traefik.http.routers.features-secure.rule=Host(`geodex.org`,`www.geodex.org`)"
+      - "traefik.http.routers.features-secure.rule=Host(`foo.org`,`www.foo.org`)"
       - "traefik.http.routers.features-secure.tls=true"
       - "traefik.http.routers.features-secure.tls.certresolver=http"
       - "traefik.http.routers.features-secure.service=features"
