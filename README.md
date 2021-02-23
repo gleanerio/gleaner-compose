@@ -9,11 +9,17 @@ search architecture and some associated configuration approaches.
 
 ## Base actions
 
+The basic foundation is the web architecture publishing of resources.
+This is done via robots.txt and sitemap.xml implementation.  
+
 ![Search Architecture Diagram](docs/flow1.png)
 
 
 
 ## Activity Diagram of Operation
+
+The core activity is the harvesting of the published resources into 
+an object store.
 
 ![Search Architecture Diagram](docs/flow2.png)
 
