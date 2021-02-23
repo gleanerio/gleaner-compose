@@ -2,8 +2,20 @@
 
 ## About
 
-A simple repository to describe the layout of a reference 
+A simple repository to describe the layout of a reference
 search architecture and some associated configuration approaches.
+
+
+
+## Base actions
+
+![Search Architecture Diagram](docs/flow1.png)
+
+
+
+## Activity Diagram of Operation
+
+![Search Architecture Diagram](docs/flow2.png)
 
 ## Architecture
 
@@ -22,7 +34,7 @@ packages that provide similar functionality.   It would be easy, for
 example, to implement many elements in a cloud native approach on
 AWS, Google Cloud or Azure.  
 
-![Search Architecture Diagram](docs/searcharch.png)
+![Search Architecture Diagram](docs/searcharchv2.png)
 
 ## Configuration
 
