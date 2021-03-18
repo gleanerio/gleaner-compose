@@ -42,6 +42,28 @@ AWS, Google Cloud or Azure.
 
 ![Search Architecture Diagram](docs/searcharchv2.png)
 
+### Further information
+
+Details of the portal architecture (starting from the upper left in Fig. 6 with the Gleaner) are:
+
+* Picking up from steps in the above activity diagram steps 3, 4 and 5 where Gleaner has fed harvested objects into the object store.
+* The extract translate load (ETL) program (Nabu) reads objects and performs the tasks
+    * Syncing JSON-LD metadata objects to the triplestore (graph database). These include provider and provenance metadata along with the resources metadata.
+  * Processing JSON-LD objects for spatial data (here feed into Koop)
+  * Processing JSON-LD objects for a text index (part of the search process)
+  * Optional extraction of metadata based on text processing of the data file directly (Tika)
+* Search interfaces can be done as SPARQL directly on the graph database or through GraphQL fronted SPARQL.
+* A headless CMS provides support for the portal web site as well as the interface for the search capacity.
+* Rounding this out is a reverse proxy to expose all these resources to the web.
+
+## Digital Object Patterns
+
+The system uses a DO pattern for objects in the object store that
+then evolves into a FAIR Implementation Pattern (a very basic one).
+
+![Search Architecture Diagram](docs/do.png)
+
+
 ## Configuration
 
 Another section is exploring using [Cue](https://cuelang.org) to 
