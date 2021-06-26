@@ -15,7 +15,6 @@ This is done via robots.txt and sitemap.xml implementation.
 ![Search Architecture Diagram](docs/flow1.png)
 
 
-
 ## Activity Diagram of Operation
 
 The core activity is the harvesting of the published resources into 
@@ -70,3 +69,5 @@ Another section is exploring using [Cue](https://cuelang.org) to
 allow easy generation of the various configuration files for the 
 Acme certs, S3 access, bucket paths, etc.   At present, there is
 not much there. 
+
+
