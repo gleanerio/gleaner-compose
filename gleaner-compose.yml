@@ -1,14 +1,16 @@
 version: '3'
 
-    # ${GLEANER_ADMIN_DOMAIN}
-    # ${GLEANER_OSS_DOMAIN}
-    # ${GLEANER_GRAPH_DOMAIN}
-    # 
-    # ${GLEANER_WEB_DOMAIN}  
-    # ${GLEANER_WEB2_DOMAIN}
-    # 
-    # ${MINIO_ACCESS_KEY}  
-    # ${MINIO_SECRET_KEY}
+# ${GLEANER_ADMIN_DOMAIN}
+# ${GLEANER_OSS_DOMAIN}
+# ${GLEANER_GRAPH_DOMAIN}
+# ${GLEANER_WEB_DOMAIN}  
+# ${GLEANER_WEB2_DOMAIN}
+# ${MINIO_ACCESS_KEY}  
+# ${MINIO_SECRET_KEY}
+#
+# ${GLEANER_TRAEFIK}
+# ${GLEANER_OBJECTS}
+# ${GLEANER_GRAPH}
 
 services:
   traefik:
@@ -25,9 +27,9 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mnt/dvol0/config/traefik/logs:/logs
-      - /mnt/dvol0/config/traefik/traefik.yml:/traefik.yml:ro
-      - /mnt/dvol0/config/traefik/acme/acme.json:/acme.json
+      - ${GLEANER_TRAEFIK}/logs:/logs
+      - ${GLEANER_TRAEFIK}/traefik.yml:/traefik.yml:ro
+      - ${GLEANER_TRAEFIK}/acme/acme.json:/acme.json
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
@@ -70,7 +72,7 @@ services:
       - "traefik.http.services.triplestore.loadbalancer.server.port=9999"
       - "traefik.docker.network=traefik_default"
     volumes:
-      - /mnt/blkstr0/dvol/blazegraph-data:/var/lib/blazegraph
+      - ${GLEANER_GRAPH}:/var/lib/blazegraph
     networks:
       - traefik_default
 
@@ -92,7 +94,7 @@ services:
       - "traefik.http.services.s3system.loadbalancer.server.port=9000"
       - "traefik.docker.network=traefik_default"
     volumes:
-      - /mnt/blkstr0/dvol/s3/Data:/data
+      - ${GLEANER_OBJECTS}:/data
     environment:
       - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
       - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
