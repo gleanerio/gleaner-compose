@@ -1,10 +1,14 @@
 version: '3'
 
-    # admin domain ${GLEANER_ADMIN_DOMAIN}
-    # object server domain ${GLEANER_OSS_DOMAIN}
-    # graph database domain ${GLEANER_GRAPH_DOMAIN}
-    # web site domains ${GLEANER_WEB_DOMAIN}  ${GLEANER_WEB2_DOMAIN}
-    # Minio ${MINIO_ACCESS_KEY}  ${MINIO_SECRET_KEY}
+    # ${GLEANER_ADMIN_DOMAIN}
+    # ${GLEANER_OSS_DOMAIN}
+    # ${GLEANER_GRAPH_DOMAIN}
+    # 
+    # ${GLEANER_WEB_DOMAIN}  
+    # ${GLEANER_WEB2_DOMAIN}
+    # 
+    # ${MINIO_ACCESS_KEY}  
+    # ${MINIO_SECRET_KEY}
 
 services:
   traefik:
