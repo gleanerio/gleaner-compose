@@ -11,9 +11,8 @@ services:
     environment:
      - SERVICE_PORTS=9222
     networks:
-      - web
+     - traefik_default
 
 networks:
-  web:
-    driver: overlay
+  traefik_default:
 
